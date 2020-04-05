@@ -1,0 +1,14 @@
+name: whatwhale
+channels:
+  - defaults
+dependencies:
+  - flask
+  - pip
+  - python=3.7
+  - numpy
+  - pylint
+  - torchvision
+  - cudatoolkit=10.1
+  - pytorch
+prefix: D:\ProgramData\Anaconda3\envs\whatwhale
+

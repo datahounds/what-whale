@@ -1,0 +1,2 @@
+FLASK_APP=whatwhale.py
+FLASK_ENV=development
