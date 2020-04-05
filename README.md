@@ -1,7 +1,24 @@
 # WhatWhale
+Flask web app for classifying images of whales.
+
+## Getting started
+This project uses a Conda virtual environment, which can be re-created as follows:
+```bash
+conda env create -f environment.yml
+```
+
+If you don't have a CUDA GPU, then install PyTorch cpu-only version:
+```bash
+conda install pytorch torchvision cpuonly -c pytorch
+```
+
+To start up the web app:
+```bash
+flask run
+```
 
 ---
-## Conda virtual environment
+## More on conda virtual environments
 [Conda documentation](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
 
 ### Create env
@@ -10,42 +27,10 @@ Create env with python 3.7 and pip
 conda create --name whatwhale python=3.7 pip
 ```
 
-Create env in specific location
-```bash
-conda create --prefix ./env python=3.7 pip
-```
-
-Create env from `environment.yml` file
-```bash
-conda env create -f environment.yml
-```
-
 ### Activate env
 Activate by name
 ```bash
 conda activate whatwhale
-```
-Activate by location
-```bash
-conda activate ./env
-```
-
-After activating environment using its prefix, your prompt will look like this:
-```bash
-(/absolute/path/to/envs) $
-```
-You can fix this by modifying the `env_prompt` setting in your `.condarc` file:
-```bash
-conda config --set env_prompt '({name})'
-```
-Reactivate env and the prompt should show as:
-```bash
-(env) $
-```
-
-### Deactivate env
-```bash
-conda deactivate
 ```
 
 ### Viewing packages
@@ -57,6 +42,11 @@ conda list
 List packages in environment using name
 ```bash
 conda list --name whatwhale
+```
+
+### Deactivate env
+```bash
+conda deactivate
 ```
 
 ### Install packages
