@@ -2,7 +2,7 @@ from flask import request, redirect, url_for, render_template
 from werkzeug.utils import secure_filename
 import os, shutil
 from app import app
-# from . import classifier
+from . import classifier
 
 
 def allowed_file(filename):
@@ -30,20 +30,20 @@ def upload_file():
         
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['OUTPUT_DIR'], filename))
-            # output = classifier.load_and_predict(filename)
+            file.save(os.path.join(app.config['STATIC_DIR'], filename))
             path_to_image = url_for('static', filename=filename)
-            print(path_to_image)
+            output = classifier.load_and_predict(os.path.join(app.config['STATIC_DIR'], filename))
             result = {
-                'output': '??',  # output,
+                'output': output,
                 'path_to_image': path_to_image,
                 'size': app.config['SIZE']
             }
             return render_template('show.html', result=result)
-    
-    # clean out static folder
-    static_folder = os.listdir(app.config['OUTPUT_DIR'])
+
+    # clean out static folder when user clicks on "go back"
+    static_folder = os.listdir(app.config['STATIC_DIR'])
     for item in static_folder:
-        os.remove(os.path.join(app.config['OUTPUT_DIR'], item))
+        if not item.endswith('.h5'):  # don't delete model .h5 file
+            os.remove(os.path.join(app.config['STATIC_DIR'], item))
 
     return render_template('index.html')

@@ -1,8 +1,10 @@
 import numpy as np
+import os
 import torch
 import torchvision
-from torchvision import transforms
 from PIL import Image
+from torchvision import transforms
+from app import app
 
 
 # detect if host machine has CUDA GPU available
@@ -10,7 +12,7 @@ device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
 # load trained image classification model
 print('Loading classifier...')
-model = torch.load('./models/cat_dog.h5').to(device)
+model = torch.load(os.path.join(app.config['STATIC_DIR'], 'cat_dog.h5')).to(device)
 
 # image pre-processing steps
 transform_image = transforms.Compose([
@@ -34,7 +36,7 @@ def load_and_predict(img_path):
     output = model(im)
     pred = torch.argmax(output, dim=1)
 
-    classes = {0:'cat', 1:'dog'}
+    classes = {0:'Cat', 1:'Dog'}
 
     # return predicted class name
     return classes[pred.item()]
