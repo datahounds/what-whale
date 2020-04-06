@@ -8,8 +8,9 @@ def allowed_file(filename):
     '''
     Checks if a given file `filename` is of type image with 'png', 'jpg', or 'jpeg' extensions
     '''
-    ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'jfif'])
-    return (('.' in filename) and (filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS))
+    ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'jfif'}
+    return '.' in filename and  \
+        filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -34,7 +35,7 @@ def upload_file():
             result = {
                 'output': output,
                 'filename': filename,
-                'size': app.config['SIZE']
+                'size': 224
             }
             return render_template('show.html', result=result)
 

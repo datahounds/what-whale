@@ -1,7 +1,7 @@
 import numpy as np
 import os
 import torch
-import torchvision
+# import torchvision
 from PIL import Image
 from torchvision import transforms
 from app import app
