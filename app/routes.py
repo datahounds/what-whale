@@ -1,8 +1,7 @@
 from flask import request, redirect, url_for, render_template
 from werkzeug.utils import secure_filename
 import os, shutil
-from app import app
-from . import classifier
+from app import app, classifier
 
 
 def allowed_file(filename):
@@ -31,11 +30,10 @@ def upload_file():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['STATIC_DIR'], filename))
-            path_to_image = url_for('static', filename=filename)
             output = classifier.load_and_predict(os.path.join(app.config['STATIC_DIR'], filename))
             result = {
                 'output': output,
-                'path_to_image': path_to_image,
+                'filename': filename,
                 'size': app.config['SIZE']
             }
             return render_template('show.html', result=result)
