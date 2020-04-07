@@ -3,6 +3,7 @@ channels:
   - defaults
 dependencies:
   - flask
+  - fask_bootstrap
   - pip
   - python=3.7
   - numpy
