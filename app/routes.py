@@ -29,11 +29,12 @@ def upload_file():
             return redirect(request.url)
         
         if file and allowed_file(file.filename):
+            img_bytes = file.read()
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['STATIC_DIR'], filename))
-            output = classifier.load_and_predict(os.path.join(app.config['STATIC_DIR'], filename))
+            class_name = classifier.get_prediction(image_bytes=img_bytes)
             result = {
-                'output': output,
+                'output': class_name,
                 'filename': filename,
                 'size': 224
             }
