@@ -7,9 +7,9 @@ This project uses a Conda virtual environment, which can be re-created as follow
 conda env create -f environment.yml
 ```
 
-If you don't have a CUDA GPU, then install PyTorch cpu-only version:
+Activate the environment:
 ```bash
-conda install pytorch torchvision cpuonly -c pytorch
+conda activate whatwhale
 ```
 
 To start up the web app:
