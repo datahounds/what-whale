@@ -2,14 +2,12 @@ name: whatwhale
 channels:
   - defaults
 dependencies:
-  - flask
-  - fask_bootstrap
-  - pip
   - python=3.7
+  - pip
+  - flask-bootstrap
   - numpy
-  - pylint
   - torchvision
-  - cudatoolkit=10.1
+  - cpuonly
   - pytorch
 prefix: D:\ProgramData\Anaconda3\envs\whatwhale
 
