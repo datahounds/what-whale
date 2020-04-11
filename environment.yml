@@ -9,5 +9,7 @@ dependencies:
   - torchvision
   - cpuonly
   - pytorch
+  - flake8
+  - python-dotenv
 prefix: D:\ProgramData\Anaconda3\envs\whatwhale
 
