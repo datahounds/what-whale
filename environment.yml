@@ -1,4 +1,4 @@
-name: whatwhale
+name: whatwhale-app
 channels:
   - defaults
 dependencies:
